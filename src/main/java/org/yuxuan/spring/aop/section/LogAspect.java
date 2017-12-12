@@ -1,49 +1,49 @@
-package org.yuxuan.spring.aop.section;
-
-import java.lang.reflect.Method;
-
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.stereotype.Component;
-import org.yuxuan.spring.aop.annotation.Action;
-
-@Aspect		//	ÉùÃ÷ÕâÊÇÒ»¸öÇÐÃæ
-@Component	//	ÉùÃ÷Ò²ÊÇÒ»¸öSpringÈÝÆ÷¹ÜÀíµÄBean
-public class LogAspect {
-	
-	/**
-	 * ÉùÃ÷ÇÐµã
-	 */
-	@Pointcut("@annotation(org.yuxuan.spring.aop.annotation.Action)")
-	public void annotationPointCut(){}
-	
-	/**
-	 * ÉùÃ÷Ò»¸ö½¨ÑÔ£¬Ê¹ÓÃ@Pointcut¶¨ÒåµÄÇÐµã
-	 * @param joinPoint
-	 */
-	@After("annotationPointCut()")
-	public void after(JoinPoint joinPoint) {
-		//	Í¨¹ý·´Éä¿ÉÒÔ»ñµÃ×¢½âÉÏµÄÊôÐÔ£¬È»ºó×öÈÕÖ¾Ïà¹ØµÄ²Ù×÷
-		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-		Method method = signature.getMethod();
-		Action action = method.getAnnotation(Action.class);
-		System.out.println("After×¢½âÊ½À¹½Ø: " + action.name());
-	}
-
-	/**
-	 * ÉùÃ÷Ò»¸ö½¨ÑÔ£¬Ö±½ÓÊ¹ÓÃÀ¹½Ø¹æÔò×÷Îª²ÎÊý
-	 * @param joinPoint
-	 */
-	@Before("execution(* org.yuxuan.spring.aop.service.DemoMethodService.*(..))")
-	public void before(JoinPoint joinPoint) {
-		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-		Method method = signature.getMethod();
-		//	»ñÈ¡·½·¨Ãû
-		System.out.println("Before·½·¨¹æÔòÊ½À¹½Ø: " + method.getName());
-	}
-	
-}
+//package org.yuxuan.spring.aop.section;
+//
+//import java.lang.reflect.Method;
+//
+//import org.aspectj.lang.JoinPoint;
+//import org.aspectj.lang.annotation.After;
+//import org.aspectj.lang.annotation.Aspect;
+//import org.aspectj.lang.annotation.Before;
+//import org.aspectj.lang.annotation.Pointcut;
+//import org.aspectj.lang.reflect.MethodSignature;
+//import org.springframework.stereotype.Component;
+//import org.yuxuan.spring.aop.annotation.Action;
+//
+//@Aspect		//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//@Component	//	ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ò»ï¿½ï¿½Springï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bean
+//public class LogAspect {
+//	
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½
+//	 */
+//	@Pointcut("@annotation(org.yuxuan.spring.aop.annotation.Action)")
+//	public void annotationPointCut(){}
+//	
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½Ê¹ï¿½ï¿½@Pointcutï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½
+//	 * @param joinPoint
+//	 */
+//	@After("annotationPointCut()")
+//	public void after(JoinPoint joinPoint) {
+//		//	Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô£ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ØµÄ²ï¿½ï¿½ï¿½
+//		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+//		Method method = signature.getMethod();
+//		Action action = method.getAnnotation(Action.class);
+//		System.out.println("After×¢ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½: " + action.name());
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½Ö±ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+//	 * @param joinPoint
+//	 */
+//	@Before("execution(* org.yuxuan.spring.aop.service.DemoMethodService.*(..))")
+//	public void before(JoinPoint joinPoint) {
+//		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+//		Method method = signature.getMethod();
+//		//	ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//		System.out.println("Beforeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½: " + method.getName());
+//	}
+//	
+//}

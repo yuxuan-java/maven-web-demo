@@ -1,30 +1,30 @@
-package org.yuxuan.spring.taskscheduled.service;
-
-import org.joda.time.DateTime;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
-/**
- * Í¨¹ý@Scheduled×¢½âÉùÃ÷·½·¨ÊÇ¼Æ»®ÈÎÎñ
- */
-@Service
-public class TaskScheduledService {
-	
-	private static final String pattern = "HH:mm:ss";
-	
-	/**
-	 * Ê¹ÓÃfixedRateÊôÐÔÃ¿¸ô¹Ì¶¨Ê±¼äÖ´ÐÐ
-	 */
-	@Scheduled(fixedRate = 5000)
-	public void reportCurrentTime() {
-		System.out.println("reportCurrentTime: " + new DateTime().toString(pattern));
-	}
-	
-	/**
-	 * Ê¹ÓÃcronÊôÐÔ¿ÉÒÔ°´ÕÕcron±í´ïÊ½Ö¸¶¨µÄÊ±¼äÖ´ÐÐ
-	 */
-	@Scheduled(cron = "*/10 * * * * ?")
-	public void fixTimeExecution() {
-		System.out.println("fixTimeExecution: " + new DateTime().toString(pattern));
-	}
-	
-}
+//package org.yuxuan.spring.taskscheduled.service;
+//
+//import org.joda.time.DateTime;
+//import org.springframework.scheduling.annotation.Scheduled;
+//import org.springframework.stereotype.Service;
+///**
+// * Í¨ï¿½ï¿½@Scheduled×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼Æ»ï¿½ï¿½ï¿½ï¿½ï¿½
+// */
+//@Service
+//public class TaskScheduledService {
+//	
+//	private static final String pattern = "HH:mm:ss";
+//	
+//	/**
+//	 * Ê¹ï¿½ï¿½fixedRateï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ì¶ï¿½Ê±ï¿½ï¿½Ö´ï¿½ï¿½
+//	 */
+//	@Scheduled(fixedRate = 5000)
+//	public void reportCurrentTime() {
+//		System.out.println("reportCurrentTime: " + new DateTime().toString(pattern));
+//	}
+//	
+//	/**
+//	 * Ê¹ï¿½ï¿½cronï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ô°ï¿½ï¿½ï¿½cronï¿½ï¿½ï¿½Ê½Ö¸ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ö´ï¿½ï¿½
+//	 */
+//	@Scheduled(cron = "*/10 * * * * ?")
+//	public void fixTimeExecution() {
+//		System.out.println("fixTimeExecution: " + new DateTime().toString(pattern));
+//	}
+//	
+//}
